@@ -311,59 +311,111 @@ method against “Choose File” button.
        //Note: use element.sendKeys(“/file/path”) with specifying path to the file for uploading. Run this
        //method against “Choose File” button.
    }
+    /* Test case #8
+        Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+    Step 2. And click on “Autocomplete”.
+    Step 3. Enter “United States of America” into
+    country input box.
+    Step 4. Verify that following message is displayed: “You selected: United States of America”
+    Optional: If you want to to be a real selenium hero,use @DataProvider for for tests cases from 9 through 12.
+    Please use following documentation: https://testng.org/doc/documentation-main.html#parameters-dataproviders
+
+        */
+    @Test
+    public void test8(){
+        //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+        driver.get("https://practice-cybertekschool.herokuapp.com");
+
+        //    Step 2. And click on “Autocomplete”.
+        driver.findElement(By.xpath(" //a[@href='/autocomplete']")).click();
+        //    Step 3. Enter “United States of America” into
+        driver.findElement(By.xpath("//input[@id='myCountry']")).sendKeys("United States of America");
 
 
-   /* Test case #8
-    Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
-Step 2. And click on “Autocomplete”.
-Step 3. Enter “United States of America” into
-country input box.
-Step 4. Verify that following message is displayed:
-“You selected: United States of America”
-Optional: If you want to to be a real selenium hero,
-use @DataProvider for for tests cases from 9
-through 12.
-Please use following documentation: https://
-testng.org/doc/documentation-
-main.html#parameters-dataproviders
+        //    country input box.
+        driver.findElement(By.xpath(" //input[@type='button']")).click();
+        //    Step 4. Verify that following message is displayed: “You selected: United States of America”
+        Assert.assertEquals(driver.findElement(By.xpath(" //p[@id='result']")).getText(), "You selected: United States of America");
 
-    */
+    }
 
    /*  Test case #9
 Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
 Step 2. And click on “Status Codes”.
 Step 3. Then click on “200”.
-Step 4. Verify that following message is displayed:
-“This page returned a 200 status code”
+Step 4. Verify that following message is displayed:“This page returned a 200 status code”
 */
+   @Test
+    public void test9(){
+       //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+       driver.get("https://practice-cybertekschool.herokuapp.com");
+       //Step 2. And click on “Status Codes”.
+       driver.findElement(By.xpath(" //a[@href='/status_codes']")).click();
+       //Step 3. Then click on “200”.
+       driver.findElement(By.linkText("200")).click();
+       //Step 4. Verify that following message is displayed:“This page returned a 200 status code”
+       System.out.println(driver.findElement(By.xpath(" //p[contains(text(),'This page returned a 200 status code.')]")).getText()
+               .contains("This page returned a 200 status code."));
+   }
    /*
 Test case #10
-Step 1. Go to “https://practice-
-cybertekschool.herokuapp.com”
+Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
 Step 2. And click on “Status Codes”.
 Step 3. Then click on “301”.
-Step 4. Verify that following message is displayed:
-“This page returned a 301 status code”
+Step 4. Verify that following message is displayed:“This page returned a 301 status code”
 
     */
+   @Test
+    public void test10(){
+       //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+       driver.get("https://practice-cybertekschool.herokuapp.com");
+       //Step 2. And click on “Status Codes”.
+       driver.findElement(By.xpath("//a[@href='/status_codes']")).click();
+       //Step 3. Then click on “301”.
+       driver.findElement(By.xpath("//a[@href='status_codes/301']")).click();
+       //Step 4. Verify that following message is displayed:“This page returned a 301 status code”
+       System.out.println(driver.findElement(By.xpath("//p")).getText().contains("This page returned a 301 status code."));
+
+   }
 
    /* Test case #11
 Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
 Step 3. And click on “Status Codes”.
 Step 4. Then click on “404”.
-Step 5. Verify that following message is displayed:
-“This page returned a 404 status code”
+Step 5. Verify that following message is displayed:“This page returned a 404 status code”
 
     */
+   @Test
+    public void test11(){
+       //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+       driver.get("https://practice-cybertekschool.herokuapp.com");
+       //Step 3. And click on “Status Codes”.
+       driver.findElement(By.linkText("Status Codes")).click();
+       //Step 4. Then click on “404”.
+       driver.findElement(By.linkText("404")).click();
+       //Step 5. Verify that following message is displayed:“This page returned a 404 status code”
+       System.out.println(driver.findElement(By.xpath("//p")).getText()
+               .contains("This page returned a 404 status code."));
+
+   }
 
    /* Test case #12
 Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
 Step 3. And click on “Status Codes”.
 Step 4. Then click on “500”.
-Step 5. Verify that following message is displayed:
-“This page returned a 500 status code”
-
+Step 5. Verify that following message is displayed:“This page returned a 500 status code”
     */
+   @Test
+    public void test12(){
+       //Step 1. Go to “https://practice-cybertekschool.herokuapp.com”
+       driver.get("https://practice-cybertekschool.herokuapp.com");
+       //Step 3. And click on “Status Codes”.
+       driver.findElement(By.linkText("Status Codes")).click();
+       //Step 4. Then click on “500”.
+       driver.findElement(By.xpath("//a[@href='status_codes/500']")).click();
+       //Step 5. Verify that following message is displayed:“This page returned a 500 status code”
+       System.out.println(driver.findElement(By.xpath("//p")).getText().contains("This page returned a 500 status code."));
+   }
 
 
 }
