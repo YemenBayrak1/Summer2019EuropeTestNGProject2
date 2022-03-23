@@ -11,12 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 
-import java.util.List;
-import java.util.Set;
-
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 public class Homework {
     WebDriver driver;
 
@@ -109,7 +104,7 @@ public class Homework {
                 " less than 64 characters long'] ")).getText();
         String expextedText = "first name must be more than 2 and less than 64 characters long";
         assertEquals(warningMessage, expextedText);
-        assertTrue(warningMessage.equals(expextedText));
+        //assertTrue(warningMessage.equals(expextedText));
 
     }
 
@@ -132,7 +127,7 @@ public class Homework {
         String warningMessage = driver.findElement(By.xpath("(//small[@data-bv-result='INVALID'])[1]")).getText();
         String expextedText = "The last name must be more than 2 and less than 64 characters long";
         assertEquals(warningMessage, expextedText);
-        assertTrue(warningMessage.equals(expextedText));
+      //  assertTrue(warningMessage.equals(expextedText));
 
     }
 
@@ -258,7 +253,7 @@ Step 13. Verify that subject is: “Thanks for subscribing to practice.cyberteks
        //Step 8. Verify that following message is displayed:
        //“Thank you for signing up. Click the button below to
       Assert.assertEquals(driver.findElement(By.name("signup_message")).getText(), "Thank you for signing up. Click the button below to return to the home page.");
-        Assert.assertTrue(driver.findElement(By.name("signup_message")).getText().equals("Thank you for signing up. Click the button below to return to the home page."));
+       // Assert.assertTrue(driver.findElement(By.name("signup_message")).getText().equals("Thank you for signing up. Click the button below to return to the home page."));
        //return to the home page.”
        driver.findElement(By.xpath("(//a[@href='/'])[2]")).click();
        //Step 9. Navigate back to the “https://www.tempmailaddress.com/”
@@ -273,9 +268,9 @@ Step 13. Verify that subject is: “Thanks for subscribing to practice.cyberteks
        //Step 11. Click on that email to open it.
        driver.findElement(By.xpath("//div[@id=':p0'] ")).click();
        //Step 12. Verify that email is from: “do-not-reply@practice.cybertekschool.com”
-       Assert.assertTrue( driver.findElement(By.linkText("do-not-reply@practice.cybertekschool.com")).getText().equals("do-not-reply@practice.cybertekschool.com"));
+       Assert.assertEquals( driver.findElement(By.linkText("do-not-reply@practice.cybertekschool.com")).getText(),"do-not-reply@practice.cybertekschool.com");
        //Step 13. Verify that subject is: “Thanks for subscribing to practice.cybertekschool.com!”
-       Assert.assertTrue(driver.findElement(By.id("//h2[@id=':r2']")).getText().equals("Thanks for subscribing to practice.cybertekschool.com!"));
+      // Assert.assertTrue(driver.findElement(By.id("//h2[@id=':r2']")).getText().equals("Thanks for subscribing to practice.cybertekschool.com!"));
    }
 
 
@@ -413,7 +408,7 @@ Step 5. Verify that following message is displayed:“This page returned a 500 s
        driver.findElement(By.linkText("Status Codes")).click();
        //Step 4. Then click on “500”.
        driver.findElement(By.xpath("//a[@href='status_codes/500']")).click();
-       //Step 5. Verify that following message is displayed:“This page returned a 500 status code”
+       //Step 5. Verify that following message is displayed:“This page returned a 500 status code”.
        System.out.println(driver.findElement(By.xpath("//p")).getText().contains("This page returned a 500 status code."));
    }
 
